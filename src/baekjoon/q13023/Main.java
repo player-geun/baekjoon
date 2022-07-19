@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Integer>[] A;
-    static boolean[]3334441 visited;`¡™£££££¢
+    static boolean[] visited;
     static boolean arrive;
 
     public static void main(String[] args) {
