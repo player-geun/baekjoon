@@ -68,9 +68,9 @@ public class Egypt {
     이때 통분한 분자의 뺄셈 결과가 0인 경우, 분모와 분자에 모두 0 설정
      */
     static Fraction minus(Fraction F, Fraction I) {
-        int newD = F.d * I.d;       //새로운 F와 I의 분모
-        int newFn = F.n * I.d;      //새로운 F의 분자
-        int newIn = I.n * F.d;      //새로운 I의 분자
+        long newD = F.d * I.d;       //새로운 F와 I의 분모
+        long newFn = F.n * I.d;      //새로운 F의 분자
+        long newIn = I.n * F.d;      //새로운 I의 분자
 
         if (newFn - newIn == 0) {
             return new Fraction(0, 0);
@@ -86,10 +86,10 @@ public class Egypt {
      */
     private static class Fraction {
 
-        int n = 0;  //분자
-        int d = 0;  //분모
+        long n = 0;  //분자
+        long d = 0;  //분모
 
-        Fraction(int n, int d) {
+        Fraction(long n, long d) {
             this.n = n;
             this.d = d;
         }
