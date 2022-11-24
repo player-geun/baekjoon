@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /*
-알고리즘 프로그래밍 과제2
+알고리즘 프로그래밍 과제5
 2018125039 이근우
  */
 public class HW5 {
