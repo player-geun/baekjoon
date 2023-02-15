@@ -4,62 +4,58 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int MAX = Integer.MIN_VALUE;	// 최댓값
-    public static int MIN = Integer.MAX_VALUE;	// 최솟값
-    public static int[] operator = new int[4];	// 연산자 개수
-    public static int[] number;					// 숫자
-    public static int N;						// 숫자 개수
+    static int N, min, max;
+    static int[] operators;
+    static int[] numbers;
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
+        numbers = new int[N];
+        operators = new int[4];
+        max = Integer.MIN_VALUE;
+        min = Integer.MAX_VALUE;
 
-        Scanner in = new Scanner(System.in);
-
-        N = in.nextInt();
-        number = new int[N];
-
-        // 숫자 입력
         for (int i = 0; i < N; i++) {
-            number[i] = in.nextInt();
+            numbers[i] = sc.nextInt();
         }
 
-        // 연산자 입력
         for (int i = 0; i < 4; i++) {
-            operator[i] = in.nextInt();
+            operators[i] = sc.nextInt();
         }
 
-        dfs(number[0], 1);
+        findMaxAndMinValue(0, numbers[0]);
 
-        System.out.println(MAX);
-        System.out.println(MIN);
-
+        System.out.println(max);
+        System.out.println(min);
     }
 
-    public static void dfs(int num, int idx) {
-        if (idx == N) {
-            MAX = Math.max(MAX, num);
-            MIN = Math.min(MIN, num);
+    public static void findMaxAndMinValue(int depth, int value) {
+        if (depth == N - 1) {
+            max = Math.max(max, value);
+            min = Math.min(min, value);
             return;
         }
 
         for (int i = 0; i < 4; i++) {
-            // 연산자 개수가 1개 이상인 경우
-            if (operator[i] > 0) {
-
-                // 해당 연산자를 1 감소시킨다.
-                operator[i]--;
-
-                switch (i) {
-
-                    case 0:	dfs(num + number[idx], idx + 1);	break;
-                    case 1:	dfs(num - number[idx], idx + 1);	break;
-                    case 2:	dfs(num * number[idx], idx + 1);	break;
-                    case 3:	dfs(num / number[idx], idx + 1);	break;
-
-                }
-                // 재귀호출이 종료되면 다시 해당 연산자 개수를 복구한다.
-                operator[i]++;
+            if (operators[i] > 0) {
+                operators[i]--;
+                int newValue = calculate(i + 1, value, numbers[depth + 1]);
+                findMaxAndMinValue(depth + 1, newValue);
+                operators[i]++;
             }
         }
     }
 
+    public static int calculate(int operator, int value1, int value2) {
+        if (operator == 1) {
+            return value1 + value2;
+        } else if (operator == 2) {
+            return value1 - value2;
+        } else if (operator == 3) {
+            return value1 * value2;
+        } else {
+            return value1 / value2;
+        }
+    }
 }
