@@ -1,19 +1,20 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Main2 {
+
+
+    private static StringBuilder sb;
+    private static int result;
     public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> a = new ArrayList<>();
 
-        a.add(new ArrayList<>());
-        a.add(new ArrayList<>());
+        String a = "aabbaccc";
 
-        a.get(1).add(1);
+        System.out.println(a.substring(0, 100));
 
-        System.out.println(a.get(1).remove((Integer) 2));
     }
 }

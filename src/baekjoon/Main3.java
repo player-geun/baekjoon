@@ -1,4 +1,4 @@
-
+package baekjoon;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,39 +7,66 @@ import java.util.StringTokenizer;
 
 public class Main3 {
 
-    static int N;
-    static int[] arr;
+    public class GuessStatisticsMessage {
+        private String number;
+        private String verb;
+        private String pluralModifier;
 
-    public static void main(String[] args) throws IOException {
-        input();
-        search();
-    }
+        public String make(char candidate, int count) {
+            createPluralDependentMessageParts(count);
 
-    public static void input() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        st = new StringTokenizer(br.readLine());
-
-        N = Integer.parseInt(st.nextToken());
-        arr = new int[N];
-
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+            return String.format("There %s %s %s%s", verb, number, candidate, pluralModifier);
         }
-    }
 
-    public static void search() {
-        int result = 0;
-
-        for (int i = 0; i < N - 3; i++) {
-            if (arr[i] < arr[i + 1] && arr[i + 1] > arr[i + 2] && arr[i + 2] < arr[i + 3]) {
-                result++;
-            } else if (arr[i] > arr[i + 1] && arr[i + 1] < arr[i + 2] && arr[i + 2] > arr[i + 3]) {
-                result++;
+        private void createPluralDependentMessageParts(int count) {
+            if (count == 0) {
+                thereAreNoLetters();
+            } else if (count == 1) {
+                thereIsOneLetter();
+            } else {
+                thereAreManyLetters(count);
             }
         }
 
-        System.out.println(result);
+        private void thereAreManyLetters(int count) {
+            number = Integer.toString(count);
+            verb = "are";
+            pluralModifier = "s";
+        }
+
+        private void thereIsOneLetter() {
+            number = "1";
+            verb = "is";
+            pluralModifier = "";
+        }
+
+        private void thereAreNoLetters() {
+            number = "no";
+            verb = "are";
+            pluralModifier = "s";
+        }
+    }
+
+    private void printGuessStatistics(char candidate, int count) {
+        String number;
+        String verb;
+        String pluralModifier;
+
+        if(count == 0) {
+            number = "no";
+            verb = "are";
+            pluralModifier = "s";
+        } else if (count == 1) {
+            number = "1";
+            verb = "is";
+            pluralModifier = "";
+        } else {
+            number = Integer.toString(count);
+            verb = "are";
+            pluralModifier = "s";
+        }
+
+        String guessMessage = String.format("There %s %s %s%s", verb, number, candidate, pluralModifier);
+        System.out.println(guessMessage);
     }
 }
