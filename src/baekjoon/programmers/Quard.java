@@ -37,6 +37,6 @@ public class Quard {
     }
 
     public static void main(String[] args) {
-        
+
     }
 }
