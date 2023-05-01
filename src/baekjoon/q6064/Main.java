@@ -16,13 +16,13 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int M = Integer.parseInt(st.nextToken());
             int N = Integer.parseInt(st.nextToken());
-            int x = Integer.parseInt(st.nextToken()) - 1;
-            int y = Integer.parseInt(st.nextToken()) - 1;
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
             boolean check = false;
 
             for (int i = x; i < (N * M); i += M) {
-                if (i % N == y) {
-                    System.out.println(i + 1);
+                if (i % N == 0 ? N == y : i % N == y) {
+                    System.out.println(i);
                     check = true;
                     break;
                 }
