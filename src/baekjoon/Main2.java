@@ -1,20 +1,17 @@
 package baekjoon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main2 {
 
-
-    private static StringBuilder sb;
-    private static int result;
     public static void main(String[] args) {
+        String a = "abc";
 
-        String a = "aabbaccc";
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        System.out.println(a.substring(0, 100));
-
+        for (int i = 0; i < 3; i++) {
+            Collections.shuffle(list);
+            System.out.println(list);
+        }
     }
 }
