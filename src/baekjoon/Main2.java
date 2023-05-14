@@ -9,9 +9,8 @@ public class Main2 {
 
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        for (int i = 0; i < 3; i++) {
-            Collections.shuffle(list);
-            System.out.println(list);
+        for (int b : list.toArray(new Integer[0])) {
+            System.out.println(b);
         }
     }
 }
