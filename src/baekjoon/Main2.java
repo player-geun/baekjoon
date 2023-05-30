@@ -1,5 +1,8 @@
 package baekjoon;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Main2 {
@@ -12,5 +15,7 @@ public class Main2 {
         for (int b : list.toArray(new Integer[0])) {
             System.out.println(b);
         }
+
+        System.out.println(LocalDateTime.of(LocalDate.now(), LocalTime.MAX));
     }
 }
